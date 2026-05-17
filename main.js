@@ -22,6 +22,54 @@ function getWeather() {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const timeOfDay = ["Night", "Day"]
     let date = document.querySelector("#monthAndDate");
+    let bg = document.querySelector("#weatherBg"); //might remove
+    let bgVideo = document.querySelector("#bg-video")
+    let weatherCondition =document.querySelector("#weatherCondition");
+    let foreDiv = document.querySelector("#fore");
+
+
+    const weatherCodes = {
+      0: "Clear sky",
+
+      1: "Mainly clear",
+      2: "Partly cloudy",
+      3: "Overcast",
+
+      45: "Fog",
+      48: "Depositing rime fog",
+
+      51: "Light drizzle",
+      53: "Moderate drizzle",
+      55: "Dense drizzle",
+
+      56: "Light freezing drizzle",
+      57: "Dense freezing drizzle",
+
+      61: "Slight rain",
+      63: "Moderate rain",
+      65: "Heavy rain",
+
+      66: "Light freezing rain",
+      67: "Heavy freezing rain",
+
+      71: "Slight snowfall",
+      73: "Moderate snowfall",
+      75: "Heavy snowfall",
+
+      77: "Snow grains",
+
+      80: "Slight rain showers",
+      81: "Moderate rain showers",
+      82: "Violent rain showers",
+
+      85: "Slight snow showers",
+      86: "Heavy snow showers",
+
+      95: "Thunderstorm",
+
+      96: "Thunderstorm with slight hail",
+      99: "Thunderstorm with heavy hail",
+    };
 
     fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${location.value || "Jos"}&limit=5&appid=${apiKey}`,
         {
@@ -43,10 +91,40 @@ function getWeather() {
                 showClock(rawTime)
                 searchedLocation.textContent = locationData[0].name;
                 currentTimeOfDay.textContent = timeOfDay[weatherData.current.is_day];
-                windSpeed.textContent = `Wind speed:${weatherData.current.wind_speed_10m} ${weatherData.current_units.wind_speed_10m}`
-                humidity.textContent = `Humidity: ${weatherData.current.relative_humidity_2m} ${weatherData.current_units.relative_humidity_2m}`
-                sunRise.textContent = `SR:${new Date(weatherData.daily.sunrise[0]).toLocaleTimeString()}`
-                sunSet.textContent = `SS:${new Date(weatherData.daily.sunset[0]).toLocaleTimeString()}`
+                windSpeed.textContent = `Wind speed:${weatherData.current.wind_speed_10m} ${weatherData.current_units.wind_speed_10m}`;
+                humidity.textContent = `Humidity: ${weatherData.current.relative_humidity_2m} ${weatherData.current_units.relative_humidity_2m}`;
+                weatherCondition.textContent = weatherCodes[weatherData.current.weather_code];
+                sunRise.textContent = `${new Date(weatherData.daily.sunrise[0]).toLocaleTimeString()}`;
+                sunSet.textContent = `${new Date(weatherData.daily.sunset[0]).toLocaleTimeString()}`;
+
+                if(weatherData.current.is_day == 0) {
+                    bgVideo.setAttribute("src", "/src/assets/vid/night1.mp4")
+                }else {
+                    bgVideo.setAttribute("src", "/src/assets/vid/day1.mp4")
+                }
+                
+                let forecastSection = document.querySelector("#forecastSection");
+                forecastSection.innerHTML = "";
+                days.forEach((data, i) => {
+                    let forecastDiv = document.createElement("div");
+                    forecastDiv.setAttribute("class", "bg-[#BDBDBB] flex flex-col gap-2.5 p-2.5 text-center rounded-md shadow-md")
+                    forecastDiv.innerHTML = `
+                    <div class="flex justify-between">
+                    <p id="weeklyDay">${days[new Date(weatherData.daily.time[i]).getDay()]}</p>
+                    <div class="flex justify-center gap-1.5">
+                        <p id="weeklyMonth">${months[new Date(weatherData.daily.time[i]).getMonth()]}</p>
+                        <p id="weeklyDate">${new Date(weatherData.daily.time[i]).getDate()}</p>
+                    </div>
+                    </div>
+                
+                    <p id="weeklyCondition" class="bg-white p-2 flex justify-end items-center rounded-md max-w-fit">${weatherCodes[weatherData.daily.weather_code[i]]}</p>
+
+                    <div class="flex justify-between text-sm text-[#555552]">
+                        <p>Min-Temp: <span id="minTemp">${weatherData.daily.temperature_2m_min[i]}${weatherData.daily_units.temperature_2m_min}</span></p>
+                        <p>Max-Temp: <span id="maxTemp">${weatherData.daily.temperature_2m_max[i]}${weatherData.daily_units.temperature_2m_max}</span></p>
+                    </div>`;
+                    forecastSection.appendChild(forecastDiv);
+                });
 
                 
             })
@@ -69,4 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
     getWeather();
 
 })
+
+
+
+
 

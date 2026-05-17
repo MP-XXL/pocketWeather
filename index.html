@@ -6,7 +6,7 @@
     <title>PocketWeather</title>
     <link rel="stylesheet" href="src/output.css">
 </head>
-<body class="bg-[#DFDDD9] font-orb">
+<body class="bg-[#DFDDD9] font-orb font-medium">
     <main>
         <section>
             <nav class="bg-[#BDBDBB]">
@@ -22,16 +22,18 @@
             </div>
 
             <div class="flex flex-col gap-2.5 justify-between">
-                <p id="temp" class="text-5xl"></p>
+                <p id="temp" class="text-5xl font-bold"></p>
                 <p id="time"></p>
             </div>
         </section>
         <section class="px-2.5">
-            <div class="py-40 rounded-md bg-[url('/src/assets/img/carlos-torres-MHNjEBeLTgw-unsplash.jpg')] bg-cover relative">
+            <div id="weatherBg" class="py-40 rounded-md bg-cover relative">
+                <video id="bg-video" autoplay loop muted playsinline  class="absolute top-0 -z-10 min-w-full h-full object-cover rounded-md shadow-md"></video>
                 <p id="location" class="text-4xl bg-[#FFFFFF] py-4 px-8 flex justify-center items-center rounded-xl absolute right-5 top-5"></p>
+                <p id="weatherCondition" class="bg-white p-2 flex justify-end items-center rounded-md max-w-fit absolute right-5 top-28"></p>
             </div>
 
-            <div>
+            <div class="flex flex-col gap-1.5 my-1.5">
                 <div class="flex justify-between">
                     <p id="windSpeed"></p>
                     <p id="timeOfDay"></p>
@@ -42,16 +44,38 @@
             </div>
 
             <div class="flex justify-between">
-                <p id="sunRise"></p>
-                <p id="sunSet"></p>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="2 2 20 20" class="text-[#FF9103]">
+                        <path
+                            d="M12 7c-2.97 0-5.43 2.17-5.91 5H2v2h20v-2h-4.09c-.48-2.83-2.94-5-5.91-5m-1-5h2v3h-2zm6.71 5.71 1-1 1-1L19 5l-.71-.71-1 1-1 1L17 7zm-11.42 0L7 7l.71-.71-1-1-1-1L5 5l-.71.71 1 1zM13 19h3l-4-4-4 4h3v3h2z">
+                        </path>
+                    </svg>
+                    <p class="text-[#8A8B87] font-bold" id="sunRise"></p>
+                </div>
+
+
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="2 2 20 20">
+                        <path
+                            d="M12 7c-2.97 0-5.43 2.17-5.91 5H2v2h20v-2h-4.09c-.48-2.83-2.94-5-5.91-5m-1-5h2v3h-2zm7.71 4.71 1-1L19 5l-.71-.71-1 1-1 1L17 7l.71.71zM7 7l.71-.71-1-1-1-1L5 5l-.71.71 1 1 1 1zm6 8h-2v3H8l4 4 4-4h-3z">
+                        </path>
+                    </svg>
+                    <p class="text-[#8A8B87] font-bold" id="sunSet"></p>
+                </div>
             </div>
         </section>
-        <section class="flex justify-center items-center my-5">
+        <section class="flex flex-col justify-center items-center my-5 gap-7">
              <form action="" class="flex gap-2">
-                <input id="inputField" type="text" placeholder="enter city or location" class="bg-white p-1.5 rounded-md">
+                <input id="inputField" type="text" placeholder="Enter city or location" class="bg-white p-1.5 rounded-md">
                 <button id="searchBtn" type="button" class="bg-[#8C8C8C] p-2.5 rounded-md transition active:scale-90">Search</button>
                 
             </form>
+
+            <h1 id="forecastBtn" type="button" class="bg-[#8C8C8C] p-2.5 rounded-md shadow-md">Weekly Forecast</h1>
+        </section>
+
+        <section id="forecastSection" class="grid grid-cols-1 gap-5 p-5 md:grid-cols-2 lg:grid-cols-3">
+
         </section>
         
     </main>
