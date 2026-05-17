@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PocketWeather</title>
+    <link rel="stylesheet" href="src/output.css">
+</head>
+<body class="bg-[#DFDDD9] font-orb">
+    <main>
+        <section>
+            <nav class="bg-[#BDBDBB]">
+                <div>
+                    <p class="p-2.5">PocketWeather</p>
+                </div>
+            </nav>
+        </section>
+        <section class="flex justify-between p-5">
+            <div class="flex flex-col text-xl">
+                <p id="day"></p>
+                <p id="monthAndDate"></p>
+            </div>
+
+            <div class="flex flex-col gap-2.5 justify-between">
+                <p id="temp" class="text-5xl"></p>
+                <p id="time"></p>
+            </div>
+        </section>
+        <section class="px-2.5">
+            <div class="py-40 rounded-md bg-[url('/src/assets/img/carlos-torres-MHNjEBeLTgw-unsplash.jpg')] bg-cover relative">
+                <p id="location" class="text-4xl bg-[#FFFFFF] py-4 px-8 flex justify-center items-center rounded-xl absolute right-5 top-5"></p>
+            </div>
+
+            <div>
+                <div class="flex justify-between">
+                    <p id="windSpeed"></p>
+                    <p id="timeOfDay"></p>
+                </div>
+                <div>
+                    <p id="humidity"></p>
+                </div>
+            </div>
+
+            <div class="flex justify-between">
+                <p id="sunRise"></p>
+                <p id="sunSet"></p>
+            </div>
+        </section>
+        <section class="flex justify-center items-center my-5">
+             <form action="" class="flex gap-2">
+                <input id="inputField" type="text" placeholder="enter city or location" class="bg-white p-1.5 rounded-md">
+                <button id="searchBtn" type="button" class="bg-[#8C8C8C] p-2.5 rounded-md transition active:scale-90">Search</button>
+                
+            </form>
+        </section>
+        
+    </main>
+
+
+    <script src="env.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
