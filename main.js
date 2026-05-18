@@ -72,7 +72,7 @@ function getWeather() {
       99: "Thunderstorm with heavy hail",
     };
 
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${location.value || "Jos"}&limit=5&appid=${apiKey}`,
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${location.value || "Jos"}&limit=5&appid=${apiKey}`,
         {
             method: "GET",
         })
