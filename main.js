@@ -1,4 +1,5 @@
-let apiKey = getApiKey();
+// let apiKey = getApiKey();
+let apiKey = "5f612cd26cf0b027b48fd7d44d819a0c"
 
 function showClock(data) {
     const clock = document.querySelector('#time');
@@ -125,9 +126,15 @@ function getWeather() {
                     </div>`;
                     forecastSection.appendChild(forecastDiv);
                 });
-
-                
+ 
             })
+            .catch((error) => {
+                alert(error)
+            })
+            
+        })
+        .catch((error) => {
+            alert(error)
         });
     
     location.value = "";
