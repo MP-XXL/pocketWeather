@@ -107,7 +107,7 @@ function getWeather() {
                 forecastSection.innerHTML = "";
                 days.forEach((data, i) => {
                     let forecastDiv = document.createElement("div");
-                    forecastDiv.setAttribute("class", "bg-[#BDBDBB] flex flex-col gap-2.5 p-2.5 text-center rounded-md shadow-md")
+                    forecastDiv.setAttribute("class", "flex flex-col gap-2.5 p-2.5 text-center rounded-md shadow-sm shadow-gray-600")
                     forecastDiv.innerHTML = `
                     <div class="flex justify-between">
                     <p id="weeklyDay">${days[new Date(weatherData.daily.time[i]).getDay()]}</p>

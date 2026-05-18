@@ -9,6 +9,16 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-500: oklch(63.7% 0.237 25.331);
+    --color-emerald-200: oklch(90.5% 0.093 164.15);
+    --color-cyan-200: oklch(91.7% 0.08 205.041);
+    --color-cyan-400: oklch(78.9% 0.154 211.53);
+    --color-blue-100: oklch(93.2% 0.032 255.585);
+    --color-blue-200: oklch(88.2% 0.059 254.128);
+    --color-blue-300: oklch(80.9% 0.105 251.813);
+    --color-blue-400: oklch(70.7% 0.165 254.624);
+    --color-gray-200: oklch(92.8% 0.006 264.531);
+    --color-gray-600: oklch(44.6% 0.03 256.802);
+    --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-white: #fff;
     --spacing: 0.25rem;
     --text-sm: 0.875rem;
@@ -200,6 +210,12 @@
   .-z-10 {
     z-index: calc(10 * -1);
   }
+  .-z-50 {
+    z-index: calc(50 * -1);
+  }
+  .my-1 {
+    margin-block: calc(var(--spacing) * 1);
+  }
   .my-1\.5 {
     margin-block: calc(var(--spacing) * 1.5);
   }
@@ -269,6 +285,9 @@
   .gap-7 {
     gap: calc(var(--spacing) * 7);
   }
+  .gap-20 {
+    gap: calc(var(--spacing) * 20);
+  }
   .rounded {
     border-radius: 0.25rem;
   }
@@ -294,8 +313,56 @@
   .bg-\[\#FFFFFF\] {
     background-color: #FFFFFF;
   }
+  .bg-\[\#f6f3ef\] {
+    background-color: #f6f3ef;
+  }
+  .bg-\[\#ffffff\] {
+    background-color: #ffffff;
+  }
+  .bg-\[url\] {
+    background-color: url;
+  }
+  .bg-blue-100 {
+    background-color: var(--color-blue-100);
+  }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .bg-\[url\(\'\'\)\] {
+    background-image: url('');
+  }
+  .bg-\[url\(\'\/src\/assets\/img\/forecast-bg-2\.jpg\'\)\] {
+    background-image: url('/src/assets/img/forecast-bg-2.jpg');
+  }
+  .bg-\[url\(\'\/src\/assets\/img\/forecast-bg-3\.jpg\'\)\] {
+    background-image: url('/src/assets/img/forecast-bg-3.jpg');
+  }
+  .bg-\[url\(\'\/src\/assets\/img\/forecast-bg\.jpg\'\)\] {
+    background-image: url('/src/assets/img/forecast-bg.jpg');
+  }
+  .bg-\[url\(\'\/src\/assets\/img\/forecast-bg1\.jpg\'\)\] {
+    background-image: url('/src/assets/img/forecast-bg1.jpg');
+  }
+  .bg-\[url\(\'\/src\/assets\/img\/forecast-bg2\.jpg\'\)\] {
+    background-image: url('/src/assets/img/forecast-bg2.jpg');
+  }
+  .bg-\[url\(\'\/src\/assets\/img\/forecast-bg3\.jpg\'\)\] {
+    background-image: url('/src/assets/img/forecast-bg3.jpg');
+  }
+  .bg-\[url\(\'src\/assets\/img\/forecast-bg-3\.jpg\'\)\] {
+    background-image: url('src/assets/img/forecast-bg-3.jpg');
+  }
+  .bg-\[url\(\'src\/assets\/img\/forecast-bg2\.jpg\'\)\] {
+    background-image: url('src/assets/img/forecast-bg2.jpg');
+  }
+  .bg-\[url\(\'src\/assets\/img\/forecast-bg3\.jpg\'\)\] {
+    background-image: url('src/assets/img/forecast-bg3.jpg');
+  }
+  .bg-\[url\(\)\] {
+    background-image: url();
+  }
+  .bg-\[cover\] {
+    background-size: cover;
   }
   .bg-cover {
     background-size: cover;
@@ -385,6 +452,64 @@
   .shadow-md {
     --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-sm {
+    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-blue-200 {
+    --tw-shadow-color: oklch(88.2% 0.059 254.128);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-blue-200) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-blue-300 {
+    --tw-shadow-color: oklch(80.9% 0.105 251.813);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-blue-300) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-blue-400 {
+    --tw-shadow-color: oklch(70.7% 0.165 254.624);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-blue-400) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-cyan-200 {
+    --tw-shadow-color: oklch(91.7% 0.08 205.041);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-cyan-200) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-cyan-400 {
+    --tw-shadow-color: oklch(78.9% 0.154 211.53);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-cyan-400) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-emerald-200 {
+    --tw-shadow-color: oklch(90.5% 0.093 164.15);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-emerald-200) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-gray-200 {
+    --tw-shadow-color: oklch(92.8% 0.006 264.531);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-gray-200) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-gray-600 {
+    --tw-shadow-color: oklch(44.6% 0.03 256.802);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-gray-600) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-gray-800 {
+    --tw-shadow-color: oklch(27.8% 0.033 256.848);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, var(--color-gray-800) var(--tw-shadow-alpha), transparent);
+    }
   }
   .outline {
     outline-style: var(--tw-outline-style);
